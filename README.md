@@ -1,11 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### 🎬 API Manajemen Tiket Film – Laravel + JWT
+Sistem backend RESTful API untuk manajemen tiket film, mencakup registrasi user, login, pemesanan tiket, jadwal tayang, dan data film menggunakan Laravel dan JWT Authentication.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Nama kelompok
+- Frensen Adriandra (2203030002)
+- I Gede Cheehaw Awidiya (2203030021)
+- Rafif Thilal (2203030025)
+### 🚀 Fitur Utama
+Register & Login User dengan JWT
+
+- CRUD Data Film
+
+- CRUD Studio (Theater)
+
+- CRUD Jadwal Penayangan Film (Schedule)
+
+- Pemesanan Tiket oleh User
+
+- Cek Kursi yang Telah Dipesan
+
+- Middleware untuk melindungi endpoint tertentu
+
+### 🛠️ Instalasi & Setup
+Clone repositori
+```bash
+bash
+Copy
+Edit
+git clone https://github.com/username/tiket-film-api.git
+cd tiket-film-api
+Install dependensi Laravel
+```
+```bash
+bash
+Copy
+Edit
+composer install
+Salin file environment
+```
+```bash
+bash
+Copy
+Edit
+cp .env.example .env
+Generate App Key & JWT Secret
+```
+```bash
+bash
+Copy
+Edit
+php artisan key:generate
+php artisan jwt:secret
+Setup Database (Edit .env)
+```
+```bash
+makefile
+Copy
+Edit
+DB_DATABASE=tiketfilm
+DB_USERNAME=root
+DB_PASSWORD=
+Migrasi & Seeder (jika ada)
+```
+```bash
+bash
+Copy
+Edit
+php artisan migrate
+php artisan db:seed
+Jalankan Server
+```
+```bash
+bash
+Copy
+Edit
+php artisan serve
+API tersedia di http://localhost:8000/api
+```
+### 🔐 Autentikasi (JWT)
+- Setelah login berhasil, simpan access_token
+
+- Tambahkan pada setiap request protected:
+    Header:
+    Authorization: Bearer {access_token}
+
+### 📚 Daftar Endpoint
+```bash
+Auth
+Method	Endpoint	Deskripsi
+POST	/register	Registrasi user
+POST	/login	Login & dapatkan token
+GET	/me	Info user login
+POST	/logout	Logout (revoke token)
+
+Film
+Method	Endpoint	Deskripsi
+GET	/films	Lihat semua film
+POST	/films	Tambah film (auth)
+GET	/films/{id}	Detail film
+PUT	/films/{id}	Update film (auth)
+DELETE	/films/{id}	Hapus film (auth)
+
+Theater
+Method	Endpoint	Deskripsi
+GET	/theaters	Lihat semua studio
+POST	/theaters	Tambah studio
+
+Schedule
+Method	Endpoint	Deskripsi
+GET	/schedules	Semua jadwal film
+POST	/schedules	Tambah jadwal tayang
+
+Ticket
+Method	Endpoint	Deskripsi
+GET	/tickets	Tiket yang dibeli user
+POST	/tickets	Pesan tiket (kursi & jadwal)
+GET	/tickets/{id}	Lihat tiket tertentu
+DELETE	/tickets/{id}	Batalkan tiket
+```
+### 🧪 Pengujian dengan Postman
+- Register user
+
+- Login dan ambil access_token
+
+- Gunakan token JWT di setiap request selanjutnya:
+    Header:
+    Authorization: Bearer {token}
+
+  menyediakan file .postman_collection.json di folder /postman (jika tersedia).
+
+### 📦 Struktur Folder (Singkat)
+- app/Models → Semua model (Film, Theater, User, Schedule, Ticket)
+
+- app/Http/Controllers → Semua controller API
+
+- routes/api.php → Semua route API
+
+- database/migrations → Struktur tabel
+
+- config/jwt.php → Konfigurasi JWT
+
+### 🧑‍💻 Tim & Kontribusi
+- Dibuat oleh: [Frensen Adriandra]
+
+- Email: [adriandrafrensen30@gmail.com]
+
+- Pull request dan issue sangat terbuka!
+
+### 📝 Lisensi
+- Proyek ini menggunakan lisensi MIT. Silakan gunakan dan modifikasi sesuai kebutuhan
 
 ## About Laravel
 
